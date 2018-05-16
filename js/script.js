@@ -69,8 +69,7 @@ var catView = {
 var catListView = {
 
 	init: function() {
-		this.catListElem = document.getElementById('cat_list');
-		
+		this.catListElem = document.getElementById('cat_list');		
 		this.render();
 	},
 
