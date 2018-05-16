@@ -7,7 +7,7 @@ body {background-color: #CCC;}
     text-align: center;
 }
 
-#cats_container {
+#cat_list_container {
     float:right;
     width:20%;
     height: 100%;
@@ -15,7 +15,7 @@ body {background-color: #CCC;}
     background-color: rgba(255,255,255,0.7);
 }
 
-#selected_cat_container {
+#current_cat_container {
     float:left;
     width:76%;
     height: 80%;
@@ -28,12 +28,12 @@ img {
     cursor: pointer;
 }
 
-.list_item {
+.img_item {
     width:10rem;
     height: 6rem;
 }
 
-#selected_item {
+#current_item {
     width:60%;
     height: 50%;
 }
