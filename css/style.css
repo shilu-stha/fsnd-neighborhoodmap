@@ -7,18 +7,33 @@ body {background-color: #CCC;}
     text-align: center;
 }
 
-#cat_container {
-    float:center;
-    width:60%;
-    height: 60%;
+#cats_container {
+    float:right;
+    width:20%;
+    height: 100%;
     padding:10px;
-    margin:20px;
     background-color: rgba(255,255,255,0.7);
 }
 
-#cat_image {
-    width:60%;
-    height: 60%;
+#selected_cat_container {
+    float:left;
+    width:76%;
+    height: 80%;
     padding:10px;
+    margin-right: 5px;
+    background-color: rgba(255,255,255,0.7);
+}
+
+img {
     cursor: pointer;
+}
+
+.list_item {
+    width:10rem;
+    height: 6rem;
+}
+
+#selected_item {
+    width:60%;
+    height: 50%;
 }
