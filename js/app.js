@@ -23,11 +23,8 @@ touristAttractions = ko.observableArray([
 	new Sites("Sam's One Tree Cafe", 27.7106478, 85.3174659, "Durbar Marg, Kathmandu", self.categories[3], "585668b95d6ec60f232f0dc9")]);
 
 var map;
-var clientID;
-var clientSecret;
-
-var markersArray = [];
 var marker;
+var markersArray = [];
 var currentList = [];
 var infowindow;
 var bounds;
@@ -35,11 +32,6 @@ var filteredList = [];
 var isMapLoad = false;
 var markerData = ko.observableArray();
     
-
-// Create placemarkers array to use in multiple functions to have control
-// over the number of places that show.
-var placeMarkers = [];
-
 function Sites(name, lat, lng, location, categories, venueId) {
 	var self = this;
     self.name = name;
@@ -71,12 +63,6 @@ function AppViewModel() {
 
 		markersArray.push(marker);
 
-		//Bounce marker for 2 seconds, when clicked.
-		marker.setAnimation(google.maps.Animation.BOUNCE);
-			setTimeout(function () {
-					marker.setAnimation(null);
-			},2000);
-
 		var contentString = '<div id="content">'+
 			'<h1 id="firstHeading" class="firstHeading">'+selectItem.name+'</h1>'+
 			'<div id="bodyContent"><p>'+selectItem.location+
@@ -87,11 +73,9 @@ function AppViewModel() {
 		google.maps.event.addListener(marker, 'click', (function (marker) {
 			return function () {
 			infowindow.setContent(contentString);
+			infowindow.open(map, marker);
 			}
-		})(marker));
-
-		infowindow.open(map, marker);
-			
+		})(marker));	
 		toggleBounce(marker);
 		bounds.extend(marker.getPosition());
 	
@@ -101,6 +85,7 @@ function AppViewModel() {
 	loadMarkers(self.touristAttractions());
 }
 
+// Load initial data from foursquare
 function loadData(){
 	for (index = 0; index < self.touristAttractions().length; index++) {
 	    value = self.touristAttractions()[index];
@@ -133,8 +118,6 @@ function loadData(){
 }
 
 function loadMarkers(list){   
-	console.log(isMapLoad)  
-	console.log(list.length)  
 	if(isMapLoad){
 		clearOverlays();
 		bounds = new google.maps.LatLngBounds();
@@ -162,8 +145,8 @@ function loadMarkers(list){
 						'</div>'+
 						'</div>';
 					infowindow.setContent(contentString);
-						  infowindow.open(map, marker);
-						  toggleBounce(marker);
+					infowindow.open(map, marker);
+					toggleBounce(marker);
 				}
 			  })(marker, index));	
 			  bounds.extend(marker.getPosition());
@@ -181,8 +164,6 @@ this.query = ko.observable('');
 self.filteredList = ko.computed(function () {
 	var filter = self.query().toLowerCase();
 	if (!filter) {
-		//return self.touristAttractions();
-		//this.setAllShow(true);
 		markerData = self.touristAttractions();
 		console.log(markerData.length);
 		loadMarkers(markerData);
@@ -194,16 +175,6 @@ self.filteredList = ko.computed(function () {
 		console.log(markerData.length);
 		loadMarkers(markerData);
 		return markerData;
-		// for (var i = 0; i < self.touristAttractions().length; i++) {
-		// 	// to check whether the searchText is there in the mapArray
-		// 	if (self.touristAttractions()[i].name.toLowerCase().indexOf(filter.toLowerCase()) >= 0) {
-		// 		self.touristAttractions()[i].marker.show(true);
-		// 		self.touristAttractions()[i].marker.setVisible(true);
-		// 	} else {
-		// 		self.touristAttractions()[i].marker.show(false);
-		// 		self.touristAttractions()[i].marker.setVisible(false);
-		// 	}
-		// }
 	}
 });
 
@@ -230,6 +201,7 @@ function populateInfoWindow(marker, infowindow, content) {
 	}
 }
 
+// Initialize map
 function initMap() {
 	isMapLoad = true;
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -240,16 +212,12 @@ function initMap() {
 	this.mapElem.style.height = window.innerHeight - 50;
 }
 
-// Bounce effect on marker
+// Bounce effect on marker. Bounce marker for 2 seconds.
 function toggleBounce(marker) {
-	if (marker.getAnimation() !== null) {
-		marker.setAnimation(null);
-	} else {
-		marker.setAnimation(google.maps.Animation.BOUNCE);
-		setTimeout(function() {
-			marker.setAnimation(null);
-		}, 700);
-	}
+	marker.setAnimation(google.maps.Animation.BOUNCE);
+			setTimeout(function () {
+					marker.setAnimation(null);
+			},2000);
 };
 	   
 // This function will loop through the listings and remove them all.
