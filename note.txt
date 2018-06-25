@@ -1,9 +1,0 @@
-1. input field to search from the all available location list. **
-2. autocomplete on list
-3. Using ajax load further detail of the selected location and add that information in the marker. 
-
-foursquare api : https://developer.foursquare.com/ **
-
-4. Implement MVP: separation of concerns **
-
-Note use the simplest js, not external libraries.
