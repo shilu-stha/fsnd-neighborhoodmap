@@ -3,23 +3,19 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Neighborhood Map</title>
+    <title>Kathmandu Map</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
       <div class="options-box">
-        <h1>Neighborhood Tourist Attractions</h1>
-            <!--Display search box and List Items-->
+        <h2>Kathmandu Tourist Attractions</h2>
         <div class="listview" data-bind="displayListView">
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                        <!-- afterkeydown', event: {keyup: filterList} -->
                   <input type="text" class="form-control" placeholder="Search" data-bind="textInput:query, valueUpdate:'afterkeydown', event: {keyup: filteredList}">
                 </div>
-              </form>
-                <!-- <input class = "search-box" placeholder = "Search Locations" data-bind = "
-            value: filterList, valueUpdate: ['afterkeydown','propertychange','input', 'keyup']"> -->
+            </form>
             <div class="list" id="list">
                 <ul class="results" id="results" data-bind="foreach: filteredList">
                     <li class="item" id="item" data-bind="text: name , click: $parent.selectItem"></li>

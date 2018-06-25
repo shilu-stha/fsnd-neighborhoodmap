@@ -1,4 +1,12 @@
 * {box-sizing:border-box; padding: 0; margin: 0;}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+    div.h2 {
+        font-size: 30px;
+    }
+}
+    
 html {
   height: 100%;
   width: 100%;
@@ -34,19 +42,17 @@ h1 {
     text-align: center;
 }
 
-/*.container {
-    position: relative;
-}*/
-
-/*#hide-listings,
-#show-listings {
-    width: 48%;
-}*/
-
-.map {
+/* .map {
     float:right;
     width:75%;
     height: 1000px;
+} */
+
+.map {
+    float:right;
+    height: 1000px;
+    width:75%;
+    min-height: 500px;
 }
 
 .options-box {
@@ -58,38 +64,19 @@ h1 {
     border: 1px solid #999;
     line-height: 35px;  
     list-style-type: none;
-    
 }
-
-/*#pano {
-width: 200px;
-height: 200px;
-}
-
-#search-within-time-text {
-width: 84%;
-}*/
 
 .text {
     font-size: 12px;
+}
+
+.title-text {
+    font-size: 22px;
 }
 
 .item {
     cursor: pointer;
     padding-left: 5px;
     border: 1px solid #999;
+    font-size: 12px;
 }
-
-/*#toggle-drawing {
-width: 27%;
-position: relative;
-margin-left: 10px;
-}
-
-#zoom-to-area-text {
-width: 70%;
-}
-
-#zoom-to-area {
-width: 24%;
-}*/
