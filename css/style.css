@@ -1,5 +1,21 @@
-* {box-sizing:border-box;}
-body {background-color: #CCC;}
+* {box-sizing:border-box; padding: 0; margin: 0;}
+html {
+  height: 100%;
+  width: 100%;
+}
+
+div .container {
+  width: 100%; height: 100%;
+}
+
+body 
+{
+    font-family: Arial, sans-serif;
+    background-color: #404448;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
 
 h2 {
     color:black;
@@ -7,33 +23,73 @@ h2 {
     text-align: center;
 }
 
-#cat_list_container {
+input {
+    font-size: 12px;
+}
+
+h1 {
+    color: #525454;
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+/*.container {
+    position: relative;
+}*/
+
+/*#hide-listings,
+#show-listings {
+    width: 48%;
+}*/
+
+.map {
     float:right;
-    width:20%;
-    height: 100%;
-    padding:10px;
-    background-color: rgba(255,255,255,0.7);
+    width:75%;
+    height: 1000px;
 }
 
-#current_cat_container {
+.options-box {
     float:left;
-    width:76%;
-    height: 80%;
-    padding:10px;
-    margin-right: 5px;
-    background-color: rgba(255,255,255,0.7);
+    width:25%;
+    height: 100%;
+    padding: 10px 10px 30px 10px;
+    background: #fff;
+    border: 1px solid #999;
+    line-height: 35px;  
+    list-style-type: none;
+    
 }
 
-img {
+/*#pano {
+width: 200px;
+height: 200px;
+}
+
+#search-within-time-text {
+width: 84%;
+}*/
+
+.text {
+    font-size: 12px;
+}
+
+.item {
     cursor: pointer;
+    padding-left: 5px;
+    border: 1px solid #999;
 }
 
-.img_item {
-    width:10rem;
-    height: 6rem;
+/*#toggle-drawing {
+width: 27%;
+position: relative;
+margin-left: 10px;
 }
 
-#current_item {
-    width:60%;
-    height: 50%;
+#zoom-to-area-text {
+width: 70%;
 }
+
+#zoom-to-area {
+width: 24%;
+}*/

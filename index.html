@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js/libs/jquery.min.js"></script>
-    <script src="js/app.js"></script>
+    <meta name="viewport" content="initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Cat Clicker</title>
+    <title>Neighborhood Map</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>Cat Clicker</h2>
-    <div id="current_cat_container">
-    	<h3 id="current_item_header"></h3>
-    	<h3 id="current_item_point"></h3>
-    	<img id="current_item" src="css/hissi_biralu.jpg">
+    <div class="container">
+      <div class="options-box">
+        <h1>Neighborhood Tourist Attractions</h1>
+            <!--Display search box and List Items-->
+        <div class="listview" data-bind="displayListView">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                        <!-- afterkeydown', event: {keyup: filterList} -->
+                  <input type="text" class="form-control" placeholder="Search" data-bind="textInput:query, valueUpdate:'afterkeydown', event: {keyup: filteredList}">
+                </div>
+              </form>
+                <!-- <input class = "search-box" placeholder = "Search Locations" data-bind = "
+            value: filterList, valueUpdate: ['afterkeydown','propertychange','input', 'keyup']"> -->
+            <div class="list" id="list">
+                <ul class="results" id="results" data-bind="foreach: filteredList">
+                    <li class="item" id="item" data-bind="text: name , click: $parent.selectItem"></li>
+                </ul>
+            </div>
+        </div>
+      </div>
+      <div class="map" id="map"></div>
     </div>
-    <div id="cat_list_container">
-		<h3 id="cat_list_header">Our Cats</h3>
-        <ul id="cat_list" class="list">All the cats you like</ul>
-    </div>    
+
+    <script src="js/libs/jquery.min.js"></script>
+    <script src='js/libs/knockout-3.4.2.js'></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyCBEH4KDe_RL1Kf08C4iluSu7CRtXmljic&v=3&callback=onMapLoad" onerror="onFailure()"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
